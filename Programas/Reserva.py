@@ -10,5 +10,15 @@ dia_mes = int(input("Ingrese el día del mes (1-30): "))
 
 #Distancias
 distancias = {"Medellín-Bogotá": 240, "Medellín-Cartagena": 461, "Bogotá-Cartagena": 657}
-ruta = origen  +"-"+  destino
+ruta = origen + "-" + destino
 distancia = distancias[ruta]
+
+#Precios
+precio = 79900 if dia_semana in ["lunes", "martes", "miércoles", "jueves"] and distancia < 400 else \
+        119900 if dia_semana not in ["lunes", "martes", "miércoles", "jueves"] and distancia < 400 else \
+        156900 if dia_semana in ["lunes", "martes", "miércoles", "jueves"] else 213000
+
+#Asiento
+preferencia = input("Prefiere asiento en el pasillo, ventana o no tiene preferencia? ")
+asiento = "C" if preferencia == "pasillo" else "A" if preferencia == "ventana" else "B"
+numero_asiento = random.randint(1, 29)
