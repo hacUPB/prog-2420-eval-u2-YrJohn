@@ -18,7 +18,10 @@ precio = 79900 if dia_semana in ["lunes", "martes", "miércoles", "jueves"] and 
         119900 if dia_semana not in ["lunes", "martes", "miércoles", "jueves"] and distancia < 400 else \
         156900 if dia_semana in ["lunes", "martes", "miércoles", "jueves"] else 213000
 
-
+# Asignación de asiento
+preferencia = input("Prefiere asiento en el pasillo, ventana o no tiene preferencia? ")
+asiento = "C" if preferencia == "pasillo" else "A" if preferencia == "ventana" else "B"
+numero_asiento = random.randint(1, 29)
 
 
 
@@ -33,4 +36,6 @@ Nombre: {Nombre}
 origen: {origen}
 destino: {destino}
 fecha: {dia_semana} {dia_mes}
-precio: ${precio}""")
+precio: ${precio}
+asiento: {numero_asiento}{asiento}
+""")
