@@ -9,8 +9,10 @@ dia_semana = input("Ingrese el día de la semana (lunes, martes, etc.): ")
 dia_mes = int(input("Ingrese el día del mes (1-30): "))
 
 #Distancias
-distancias = {"Medellín-Bogotá": 240, "Medellín-Cartagena": 461, "Bogotá-Cartagena": 657, "Bogotá-Medellín": 240, "Cartagena-Medellín": 461, "Cartagena-Bogotá": 657}
+distancias = {"Medellín-Bogotá": 240, "Medellín-Cartagena": 461, "Bogotá-Cartagena": 657}
 ruta = origen + "-" + destino
+if ruta not in distancias:
+    ruta = destino + "-" + origen
 distancia = distancias[ruta]
 
 #Precios
