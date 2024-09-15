@@ -12,8 +12,13 @@ def seleccionar_opcion(opciones):
 
 
 #Nombre del viajero
+print("Seleccione su titulo:")
+titulos = ["Sr.", "Sra."]
+titulo = seleccionar_opcion(titulos)
+
+
 Nombre = input("Ingrese su nombre completo: ")
-print (f"¡Bienvenido a FastFast Airlines, {Nombre}!")
+print (f"¡Bienvenido a FastFast Airlines, {titulo}{Nombre}!")
 
 #Rutas
 # Seleccionar origen
@@ -32,6 +37,12 @@ while destino == origen:
 print("Seleccione el día de la semana:")
 dias_semana = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 dia_semana = seleccionar_opcion(dias_semana)
+
+
+#Seleccionar mes
+print("Seleccione el mes de su viaje:")
+Meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+Mes = seleccionar_opcion(Meses)
 
 #Seleccionar día mes
 dia_mes = int(input("Ingrese el día del mes (1-30): "))
@@ -64,11 +75,12 @@ numero_asiento = random.randint(1, 29)
 
 #Reserva
 print(f"""
-Aqui esta su reserva:
-Nombre: {Nombre}
-origen: {origen}
-destino: {destino}
-fecha: {dia_semana} {dia_mes}
-precio: ${precio}
-asiento: {numero_asiento}{asiento}
+Su reserva fue realizada con exito:
+Reserva para: {titulo}{Nombre}
+Viaja desde: {origen}
+Viaja hacia: {destino}
+Dia de su viaje: {dia_semana} {dia_mes} de {Mes}
+Precio de su boleto: ${precio}
+Su asiento: {numero_asiento}{asiento}
+¡Gracias por confiar en FastFast Airlines!
 """)
