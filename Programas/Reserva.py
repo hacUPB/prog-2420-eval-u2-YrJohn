@@ -1,13 +1,42 @@
 import random
+
+def seleccionar_opcion(opciones):
+    for i, opcion in enumerate(opciones, 1):
+        print(f"{i}. {opcion}")
+    seleccion = int(input("Seleccione una opción (número): "))
+    while seleccion < 1 or seleccion > len(opciones):
+        seleccion = int(input("Opción inválida. Seleccione un número válido: "))
+    return opciones[seleccion - 1]
+
+
+
+
 #Nombre del viajero
 Nombre = input("Ingrese su nombre completo: ")
 print (f"¡Bienvenido a FastFast Airlines, {Nombre}!")
-#Rutas
-origen = input("Ingrese su ciudad de origen (Medellín, Bogotá o Cartagena): ")
-destino = input("Ingrese su ciudad de destino (Medellín, Bogotá o Cartagena): ")
-dia_semana = input("Ingrese el día de la semana (lunes, martes, etc.): ")
-dia_mes = int(input("Ingrese el día del mes (1-30): "))
 
+#Rutas
+# Seleccionar origen
+print("Seleccione su ciudad de origen:")
+ciudades = ["Medellín", "Bogotá", "Cartagena"]
+origen = seleccionar_opcion(ciudades)
+
+# Seleccionar destino
+print("Seleccione su ciudad de destino:")
+destino = seleccionar_opcion(ciudades)
+while destino == origen:
+    print("El destino no puede ser igual al origen. Seleccione otro destino.")
+    destino = seleccionar_opcion(ciudades)
+
+#Seleccionar día semana
+print("Seleccione el día de la semana:")
+dias_semana = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
+dia_semana = seleccionar_opcion(dias_semana)
+
+#Seleccionar día mes
+dia_mes = int(input("Ingrese el día del mes (1-30): "))
+while dia_mes < 1 or dia_mes > 30:
+    dia_mes = int(input("Día inválido. Ingrese un número entre 1 y 30: "))
 #Distancias
 distancias = {"Medellín-Bogotá": 240, "Medellín-Cartagena": 461, "Bogotá-Cartagena": 657}
 ruta = origen + "-" + destino
@@ -20,8 +49,10 @@ precio = 79900 if dia_semana in ["lunes", "martes", "miércoles", "jueves"] and 
         119900 if dia_semana not in ["lunes", "martes", "miércoles", "jueves"] and distancia < 400 else \
         156900 if dia_semana in ["lunes", "martes", "miércoles", "jueves"] else 213000
 
-# Asignación de asiento
-preferencia = input("Prefiere asiento en el pasillo, ventana o no tiene preferencia? ")
+#Asientos
+print("Seleccione su preferencia de asiento:")
+preferencias_asiento = ["pasillo", "ventana", "sin preferencia"]
+preferencia = seleccionar_opcion(preferencias_asiento)
 asiento = "C" if preferencia == "pasillo" else "A" if preferencia == "ventana" else "B"
 numero_asiento = random.randint(1, 29)
 
